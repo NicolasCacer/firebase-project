@@ -1,7 +1,6 @@
 import express from 'express';        // Express.js framework
 import dotenv from 'dotenv';         // dotenv to load environment variables
-import userRouter from './routes/userRoutes.js';
-import serverless from 'serverless-http'; // serverless-http to wrap the app for serverless environments
+import userRouter from '../routes/userRoutes.js';
 
 dotenv.config(); // Load environment variables
 

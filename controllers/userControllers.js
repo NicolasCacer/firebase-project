@@ -1,4 +1,4 @@
-import { getUserByIdService, getAllUsersService } from "../services/userServices.js";
+import {getUserByIdService, getAllUsersService} from '../services/userServices.js';
 
 // Controller to fetch all users
 export const getAllUsers = async (req, res) => {
