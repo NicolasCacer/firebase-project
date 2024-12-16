@@ -12,9 +12,13 @@ const port = process.env.PORT || 3000; // Use the port from environment or defau
 app.use(express.json());
 
 // Set routes for the server
-app.use('/users', userRouter);
+//app.use('/users', userRouter);
 
 // If in a local environment, start the Express server with app.listen
+app.use((req, res) => {
+  res.status(404).json({ message: "Ruta no encontrada" });
+});
+
 app.listen(port, () => {
   console.log(`Servidor corriendo en http://localhost:${port}`);
 });
