@@ -1,15 +1,28 @@
 import express from 'express';
-import dotenv from 'dotenv';
-import {userRouter} from '../routes/userRoutes.js';
+import cors from 'cors';
+import userRouter from '../routes/users.js';
 
 const app = express();
-dotenv.config();
+const port = 3000;
 
-app.get('/', (req, res) => {
-    res.send('Hello, world!');
-});
+app.use(cors());
 app.use(express.json());
-app.use("/users",userRouter);
 
+app.use('/users', userRouter);
 
-app.listen(3000, () => console.log('Server ready on port 3000.'));
+app.use((req, res) => {
+  res.status(404).json({ message: 'Esta ruta no existe' });
+});
+
+app.use((err, req, res, next) => {
+  console.error(err.stack); // Loggear el error para depuración
+  res.status(500).json({
+    message_error: err.message || 'Error interno del servidor',
+  });
+});
+
+app.listen(port, () => {
+  console.log(`Servidor corriendo en http://localhost:${port}`);
+});
+
+export default app;
