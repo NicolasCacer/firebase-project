@@ -23,4 +23,4 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 // Export serverless handler for deployment
-export default serverless(app);
+export default app;
