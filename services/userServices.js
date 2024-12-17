@@ -1,3 +1,5 @@
+import admin from 'firebase-admin';
+import { db } from '../config/firebaseConfig.js';
 import dotenv from 'dotenv'; // dotenv to load environment variables
 dotenv.config();
 
@@ -5,9 +7,11 @@ export const getUserByIdService = async (userId) =>{
   return [{id:userId,name:'name'}];
 }
 export const getAllUsersService = async () =>{
-  
-  return [{id:0,name:'name1'},{id:1,name:'name2'}];
+  const usersSnapshot = await db.collection('Users').get();  // Get the query snapshot
+  const users = usersSnapshot.docs.map(doc => doc.data());
+  return users;
 }
+
 
 
 /*

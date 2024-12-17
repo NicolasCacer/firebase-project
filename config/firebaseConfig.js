@@ -1,6 +1,6 @@
-// Firebase configuration from environment variables
-import dotenv from 'dotenv'; // dotenv to load environment variables
-dotenv.config();
+import 'dotenv/config';
+import admin from 'firebase-admin';
+import serviceAccount from '../serviceAccount.json' assert {type:'json'};
 
 const firebaseConfig = {
     apiKey: process.env.FIREBASE_API_KEY,
@@ -13,4 +13,14 @@ const firebaseConfig = {
     measurementId: process.env.FIREBASE_MEASUREMENT_ID,
   };
 
-export default firebaseConfig;
+if (!admin.apps.length) {
+  admin.initializeApp({
+    credential: admin.credential.cert(serviceAccount),
+    databaseURL: process.env.FIREBASE_DATABASE_URL,
+    storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
+  });
+}
+  
+export const db = admin.firestore();
+export const rtdb = admin.database();
+export const storage = admin.storage().bucket();
