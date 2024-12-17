@@ -1,23 +1,17 @@
 import { collection, getDocs, doc, getDoc, getFirestore } from 'firebase/firestore';
 import firebaseConfig from '../config/firebaseConfig.js'; //import the firebase keys and secrets
 import { initializeApp } from 'firebase/app';
-import dotenv from 'dotenv';
-dotenv.config();// Initialize the dotenv configuration to load .env variables
+import dotenv from 'dotenv'; // dotenv to load environment variables
+dotenv.config();
 
-const appFirebase = initializeApp(firebaseConfig);
-const db = getFirestore(appFirebase);
+
 
 export const getUserByIdService = async (userId) =>{
   return [{id:userId,name:'name'}];
 }
 export const getAllUsersService = async () =>{
-  const usersCollectionRef = collection(db, 'Users');
-  const snapshot = await getDocs(usersCollectionRef);
-  const users = [];
-  snapshot.forEach((doc) => {
-    users.push({ id: doc.id, ...doc.data() });
-  });
-  return users;
+  
+  return [{id:0,name:'name1'},{id:1,name:'name2'}];
 }
 
 
