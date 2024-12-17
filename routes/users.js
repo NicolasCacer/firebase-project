@@ -1,17 +1,7 @@
-import { Router } from 'express';
-import { getAllUsers, getUserById } from '../controllers/userControllers.js';
+import express from 'express'
+const userRouter = express.Router();
 
-const userRouter = Router();
-
-// Route to fetch all users
-userRouter.get('/', (req, res) => {
-    res.send('List of all users');
-  });
-  
-// Define a route for getting a specific user by ID
-userRouter.get('/:id', (req, res) => {
-    const userId = req.params.id;
-    res.send(`User details for user with ID: ${userId}`);
-  });
+userRouter.get('/', (req, res)=>{res.send({server:'Get all'})});
+userRouter.get('/:id', (req, res)=>{res.send({server:`Get ${req.params.id}`})});
 
 export default userRouter;
