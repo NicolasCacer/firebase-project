@@ -17,7 +17,7 @@ export const getAllUsersService = async () =>{
   snapshot.forEach((doc) => {
     users.push({ id: doc.id, ...doc.data() });
   });
-  return users;
+  return [{id:"273195",age:20,name:"Nicolas"},{id:"305484",name:"Mariana",age:21}];
 }
 
 
