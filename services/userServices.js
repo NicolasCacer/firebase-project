@@ -1,3 +1,12 @@
+export const getUserByIdService = async (userId) =>{
+  return [{id:userId,name:'name'}];
+}
+export const getAllUsersService = async () =>{
+  return [{id:0,name:'Nico'},{id:1,name:'Mari'}];
+}
+
+
+/*
 import { collection, getDocs, doc, getDoc, getFirestore } from 'firebase/firestore';
 import firebaseConfig from '../config/firebaseConfig.js'; //import the firebase keys and secrets
 import { initializeApp } from 'firebase/app';
@@ -29,3 +38,4 @@ export const getUserByIdService = async (userId) => {
   }
   return null;
 };
+*/

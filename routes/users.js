@@ -1,7 +1,8 @@
 import express from 'express'
+import { getUserById, getAllUsers } from '../controllers/user.js';
 const userRouter = express.Router();
 
-userRouter.get('/', (req, res)=>{res.send({server:'Get all'})});
-userRouter.get('/:id', (req, res)=>{res.send({server:`Get ${req.params.id}`})});
+userRouter.get('/', getAllUsers);
+userRouter.get('/:id', getUserById);
 
 export default userRouter;
