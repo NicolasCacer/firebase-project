@@ -13,4 +13,4 @@ const firebaseConfig = {
     measurementId: process.env.FIREBASE_MEASUREMENT_ID,
   };
 
-  export default firebaseConfig;
+export default firebaseConfig;
