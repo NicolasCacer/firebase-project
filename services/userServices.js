@@ -10,13 +10,8 @@ const db = getFirestore(appFirebase);
 export const getUserByIdService = async (userId) =>{
   return [{id:userId,name:'name'}];
 }
+
 export const getAllUsersService = async () =>{
-  const usersCollectionRef = collection(db, 'Users');
-  const snapshot = await getDocs(usersCollectionRef);
-  const users = [];
-  snapshot.forEach((doc) => {
-    users.push({ id: doc.id, ...doc.data() });
-  });
   return [{id:"273195",age:20,name:"Nicolas"},{id:"305484",name:"Mariana",age:21}];
 }
 
