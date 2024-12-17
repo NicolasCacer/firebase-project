@@ -1,8 +1,8 @@
+import { collection, getDocs, doc, getDoc, getFirestore } from 'firebase/firestore';
+import firebaseConfig from '../config/firebaseConfig.js'; //import the firebase keys and secrets
+import { initializeApp } from 'firebase/app';
 import dotenv from 'dotenv';
 dotenv.config();// Initialize the dotenv configuration to load .env variables
-
-const appFirebase = initializeApp(firebaseConfig);
-const db = getFirestore(appFirebase);
 
 export const getUserByIdService = async (userId) =>{
   return [{id:userId,name:'name'}];
