@@ -1,7 +1,7 @@
 // routes/items.js
-const express = require('express');
+import express from 'express';
 const router = express.Router();
-const db = require('../firebase');
+import db from '../firebase.js';
 
 const COLLECTION_NAME = 'Users'; // Nombre de tu colección en Firestore
 
@@ -70,4 +70,4 @@ router.delete('/:id', async (req, res) => {
     }
 });
 
-module.exports = router;
+export default router;

@@ -1,6 +1,5 @@
-// index.js
-const express = require('express');
-const itemsRoutes = require('./routes/items');
+import express from 'express';
+import itemsRoutes from './routes/items.js';
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -17,4 +16,4 @@ app.listen(port, () => {
   console.log(`Server listening on http://localhost:${port}`);
 });
 
-module.exports = app; // Para que Vercel lo reconozca
+export default app; // Para que Vercel lo reconozca
