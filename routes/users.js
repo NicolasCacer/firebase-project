@@ -1,12 +1,12 @@
 // routes/items.js
 import express from 'express';
-const router = express.Router();
 import db from '../firebase.js';
 
-const COLLECTION_NAME = 'Users'; // Nombre de tu colección en Firestore
+const userRouter = express.Router();
+const COLLECTION_NAME = 'Users';
 
 // Obtener todos los items
-router.get('/', async (req, res) => {
+userRouter.get('/', async (req, res) => {
   try {
     const snapshot = await db.collection(COLLECTION_NAME).get();
     const items = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
@@ -18,7 +18,7 @@ router.get('/', async (req, res) => {
 });
 
 // Obtener un item por ID
-router.get('/:id', async (req, res) => {
+userRouter.get('/:id', async (req, res) => {
     try {
         const itemId = req.params.id;
         const doc = await db.collection(COLLECTION_NAME).doc(itemId).get();
@@ -33,7 +33,7 @@ router.get('/:id', async (req, res) => {
 });
 
 // Crear un nuevo item
-router.post('/', async (req, res) => {
+userRouter.post('/', async (req, res) => {
   try {
     const newItem = req.body;
     const docRef = await db.collection(COLLECTION_NAME).add(newItem);
@@ -45,7 +45,7 @@ router.post('/', async (req, res) => {
 });
 
 // Actualizar un item
-router.put('/:id', async (req, res) => {
+userRouter.put('/:id', async (req, res) => {
     try {
         const itemId = req.params.id;
         const updatedItem = req.body;
@@ -59,7 +59,7 @@ router.put('/:id', async (req, res) => {
 
 
 // Eliminar un item
-router.delete('/:id', async (req, res) => {
+userRouter.delete('/:id', async (req, res) => {
     try {
         const itemId = req.params.id;
         await db.collection(COLLECTION_NAME).doc(itemId).delete();
@@ -70,4 +70,4 @@ router.delete('/:id', async (req, res) => {
     }
 });
 
-export default router;
+export default userRouter;
