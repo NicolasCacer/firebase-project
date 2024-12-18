@@ -1,6 +1,6 @@
 // routes/items.js
 import express from 'express';
-import db from '../firebase.js';
+import db from '../config/firebase.js';
 
 const userRouter = express.Router();
 const COLLECTION_NAME = 'Users';
