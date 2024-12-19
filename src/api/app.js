@@ -7,7 +7,14 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 app.use(express.json());
-app.use(cors({ origin: "*" }));
+app.use(
+  cors({
+    origin: [
+      "http://localhost:3000/",
+      "https://firebase-project-delta.vercel.app/",
+    ],
+  })
+);
 app.use("/users", userRouter);
 app.get("/", (req, res) => {
   res.send("API is running");
